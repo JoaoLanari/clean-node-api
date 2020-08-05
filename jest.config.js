@@ -7,6 +7,7 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
+  preset: '@shelf/jest-mngodb',
   transform: {
     '.+\\.ts$': 'ts-jest'
   }
