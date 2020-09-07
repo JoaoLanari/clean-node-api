@@ -12,9 +12,7 @@ const makeController = (): Controller => {
       const httpRespose: HttpRespose = {
         statusCode: 200,
         body: {
-          name: 'any_name',
-          email: 'any_email',
-          password: 'any_password'
+          name: 'any_name'
         }
       }
       return new Promise(resolve => resolve(httpRespose))
@@ -47,5 +45,25 @@ describe('LogController Decorator', () => {
     }
     await sut.handle(httpRequest)
     expect(handleSpy).toHaveBeenCalledWith(httpRequest)
+  })
+
+  test('Should return the same result of the controller', async () => {
+    const { sut } = makeSut()
+
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        email: 'any_email',
+        password: 'any_password',
+        passwordConfirmation: 'any_password'
+      }
+    }
+    const httpReponse = await sut.handle(httpRequest)
+    expect(httpReponse).toEqual({
+      statusCode: 200,
+      body: {
+        name: 'any_name'
+      }
+    })
   })
 })
