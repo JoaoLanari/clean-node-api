@@ -1,4 +1,4 @@
-import { Validation } from './validation'
+import { Validation } from '../../protocols/validation'
 import { callbackify } from 'util'
 
 export class ValidationComposite implements Validation {
